@@ -8,19 +8,28 @@
 // Check if og string = reversed string, return "yeup", else return "nope"
 
 //Notes
-let word = "Alucard";
+let word = "racecar";
 
 palindromeCheck = (testWord) => {
-  let oldString = testWord.toString().split("");
+  let oldString = testWord.toString().toLowerCase().split("");
   let newString = "";
 
   for (i = oldString.length - 1; i >= 0; i--) {
     newString += oldString[i];
-    console.log();
   }
 
+  let testPal = newString.toString();
+  let palindromeChecker =
+    testWord.toString().toLowerCase() === newString
+      ? ". This is a palindrome"
+      : ". This is not a palindrome";
+
   return (
-    "The old string was " + word + " the new string is " + newString.toString()
+    "The old input was: " +
+    testWord +
+    ". The new output is: " +
+    testPal +
+    palindromeChecker
   );
 };
 
