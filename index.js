@@ -8,7 +8,7 @@
 // Check if og string = reversed string, return "yeup", else return "nope"
 
 //Notes
-let word = "racecar";
+let word = "check this out";
 
 palindromeCheck = (testWord) => {
   let oldString = testWord.toString().toLowerCase().split("");
