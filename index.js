@@ -1,17 +1,9 @@
 //EXERCISE TITLE - Palindrome checker - version 2 and 3
 //EXERCISE DATE - Jan 23 2020
 
-//Steps
-
-//Function that accepts a string.
-//Function should reverse string
-// Check if og string = reversed string, return "yeup", else return "nope"
-
-//Notes
-
 let word = "noodoon";
 
-// METHOD 1: Long way. Split and reverse a string, join it again, and then compare it to the original.
+// METHOD 1: Original attempt. Novice, the long way. Split and reverse a string, join it again, and then compare it to the original.
 
 // palindromeCheck = (testWord) => {
 //   let oldString = testWord.toString().toLowerCase().split("");
@@ -62,6 +54,5 @@ palindromeCheck = (testWord) => {
 desiredOutput = "Is " + word + " a Palindrome? >>> " + palindromeCheck(word);
 
 //DONT CHANGE! THIS IS OUTPUT LINE
-//desiredOutput set to whatever the exercise output calls for
 document.getElementById("jsedit").innerHTML =
   "Result from exercise: " + desiredOutput;
