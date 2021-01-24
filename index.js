@@ -1,58 +1,90 @@
-//EXERCISE TITLE - Palindrome checker - version 2 and 3
+//EXERCISE TITLE - Palindrome checker
 //EXERCISE DATE - Jan 23 2020
 
-let word = "noodoon";
+//Vers. 1 (Chris): Original, novice, the long way. Split and reverse a string, join it again, and compare to original.
 
-// METHOD 1: Original attempt. Novice, the long way. Split and reverse a string, join it again, and then compare it to the original.
+let wordOne = "yoroy";
 
-// palindromeCheck = (testWord) => {
-//   let oldString = testWord.toString().toLowerCase().split("");
-//   let newString = "";
+palindromeCheckOne = (testWord) => {
+  let oldString = testWord.toString().toLowerCase().split("");
+  let newString = "";
 
-//   for (i = oldString.length - 1; i >= 0; i--) {
-//     newString += oldString[i];
-//   }
+  for (i = oldString.length - 1; i >= 0; i--) {
+    newString += oldString[i];
+  }
 
-//   let testPal = newString.toString();
-//   let palindromeChecker =
-//     testWord.toString().toLowerCase() === newString
-//       ? ". This is a palindrome"
-//       : ". This is not a palindrome";
+  let testPal = newString.toString();
+  let palindromeChecker =
+    testWord.toString().toLowerCase() === newString
+      ? ". This is a palindrome"
+      : ". This is not a palindrome";
 
-//   return (
-//     "The old input was: " +
-//     testWord +
-//     ". The new output is: " +
-//     testPal +
-//     palindromeChecker
-//   );
-// };
+  return (
+    "The old input was: " +
+    testWord +
+    ". The new output is: " +
+    testPal +
+    palindromeChecker
+  );
+};
 
-// METHOD 2: Implosive style, algorithm from David Tang https://davidtang.io/2019-04-11-learning-recursion-in-javascript-part-4/
-palindromeCheck = (testWord) => {
-  //original: make any input a string, lowercase it
+palindromeCheckOne(wordOne);
+
+// Vers. 2: Implosive style, algorithm from David Tang https://davidtang.io/2019-04-11-learning-recursion-in-javascript-part-4/
+
+let wordTwo = "racecar";
+
+palindromeCheckTwo = (testWord) => {
   let oldString = testWord.toString().toLowerCase();
 
-  //Base conditional. Either reach a middle letter for an odd numbered string or reach 0 on an even numbered string
+  // Base conditional. Either reach a middle letter for an odd numbered string or reach 0 on an even numbered string
+
   if (oldString.length <= 1) {
     return true;
   }
-
+  //ES6 syntax. Not 100% understood
   let [firstLetter] = oldString;
   let lastLetter = oldString[oldString.length - 1];
 
   if (firstLetter === lastLetter) {
     let leftoverString = oldString.substring(1, oldString.length - 1);
-    return palindromeCheck(leftoverString);
+    return palindromeCheckTwo(leftoverString);
   } else {
     return false;
   }
-
-  // oldString should be formatted and made into an array
 };
 
-desiredOutput = "Is " + word + " a Palindrome? >>> " + palindromeCheck(word);
+palindromeCheckTwo(wordTwo);
 
+//Vers. 3 using slice and recursion (a la Nat Giron)
+
+let wordThree = "noodoon";
+
+function palindromeCheckThree(testWord) {
+  let firstLetter = testWord[0];
+  let lastLetter = testWord[testWord.length - 1];
+
+  if (testWord.length < 2) {
+    return true;
+  }
+
+  if (firstLetter === lastLetter) {
+    // Recursion setup
+    leftoverString = testWord.slice(1, testWord.length - 1);
+    // Recursion execution
+    return palindromeCheckThree(leftoverString);
+  }
+  // Needed to keep the loop running
+  console.log(testWord);
+  return false;
+}
+
+desiredOutput =
+  "Is " + wordThree + " a Palindrome? >>> " + palindromeCheckThree(wordThree);
 //DONT CHANGE! THIS IS OUTPUT LINE
 document.getElementById("jsedit").innerHTML =
   "Result from exercise: " + desiredOutput;
+
+// desired Output and such goes here
+
+// Version 3: Master strike from Nat Giron
