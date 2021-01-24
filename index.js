@@ -1,5 +1,5 @@
-//EXERCISE TITLE - Palindrome checker
-//EXERCISE DATE - Jan 20 2020
+//EXERCISE TITLE - Palindrome checker - version 2 and 3
+//EXERCISE DATE - Jan 23 2020
 
 //Steps
 
@@ -8,32 +8,58 @@
 // Check if og string = reversed string, return "yeup", else return "nope"
 
 //Notes
-let word = "check this out";
 
+let word = "noodoon";
+
+// METHOD 1: Long way. Split and reverse a string, join it again, and then compare it to the original.
+
+// palindromeCheck = (testWord) => {
+//   let oldString = testWord.toString().toLowerCase().split("");
+//   let newString = "";
+
+//   for (i = oldString.length - 1; i >= 0; i--) {
+//     newString += oldString[i];
+//   }
+
+//   let testPal = newString.toString();
+//   let palindromeChecker =
+//     testWord.toString().toLowerCase() === newString
+//       ? ". This is a palindrome"
+//       : ". This is not a palindrome";
+
+//   return (
+//     "The old input was: " +
+//     testWord +
+//     ". The new output is: " +
+//     testPal +
+//     palindromeChecker
+//   );
+// };
+
+// METHOD 2: Implosive style, algorithm from David Tang https://davidtang.io/2019-04-11-learning-recursion-in-javascript-part-4/
 palindromeCheck = (testWord) => {
-  let oldString = testWord.toString().toLowerCase().split("");
-  let newString = "";
+  //original: make any input a string, lowercase it
+  let oldString = testWord.toString().toLowerCase();
 
-  for (i = oldString.length - 1; i >= 0; i--) {
-    newString += oldString[i];
+  //Base conditional. Either reach a middle letter for an odd numbered string or reach 0 on an even numbered string
+  if (oldString.length <= 1) {
+    return true;
   }
 
-  let testPal = newString.toString();
-  let palindromeChecker =
-    testWord.toString().toLowerCase() === newString
-      ? ". This is a palindrome"
-      : ". This is not a palindrome";
+  let [firstLetter] = oldString;
+  let lastLetter = oldString[oldString.length - 1];
 
-  return (
-    "The old input was: " +
-    testWord +
-    ". The new output is: " +
-    testPal +
-    palindromeChecker
-  );
+  if (firstLetter === lastLetter) {
+    let leftoverString = oldString.substring(1, oldString.length - 1);
+    return palindromeCheck(leftoverString);
+  } else {
+    return false;
+  }
+
+  // oldString should be formatted and made into an array
 };
 
-desiredOutput = palindromeCheck(word);
+desiredOutput = "Is " + word + " a Palindrome? >>> " + palindromeCheck(word);
 
 //DONT CHANGE! THIS IS OUTPUT LINE
 //desiredOutput set to whatever the exercise output calls for
