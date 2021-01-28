@@ -1,90 +1,45 @@
-//EXERCISE TITLE - Palindrome checker
-//EXERCISE DATE - Jan 23 2020
+//EXERCISE TITLE - The Beatles with a twist - work in progress
+//EXERCISE DATE - Jan 27 2020
 
-//Vers. 1 (Chris): Original, novice, the long way. Split and reverse a string, join it again, and compare to original.
+// Start off loading some Beatles lyrics. Will improve formatting.
+//My funny idea here is to replace Jude with Dude. Now, how to go about doing so?
 
-let wordOne = "yoroy";
+let lyrics =
+  "Hey Jude, don't make it bad \
+Take a sad song and make it better \
+Remember to let her into your heart \
+Then you can start to make it better \
+Hey Jude, don't be afraid \
+You were made to go out and get her \
+The minute you let her under your skin \
+Then you begin to make it better \
+Oh-oh-oh, and anytime you feel the pain \
+Hey Jude, refrain \
+Don't carry the world upon your shoulders \
+For well you know that it's a fool \
+Who plays it cool \
+By making his world a little colder";
 
-palindromeCheckOne = (testWord) => {
-  let oldString = testWord.toString().toLowerCase().split("");
-  let newString = "";
+//V.1 use replace. Only works for first instance of "Jude" though.
 
-  for (i = oldString.length - 1; i >= 0; i--) {
-    newString += oldString[i];
+// desiredOutput = lyrics.replace("Jude", "Dude");
+
+//V.2 Simple iterative function works. Now, how to format?
+
+function dudeCall(str) {
+  let count = 0;
+  for (i = 0; i < str.length - 1; i++) {
+    if (str.charAt(i) === "J") {
+      str = str.replace("Jude", "Dude");
+    }
   }
-
-  let testPal = newString.toString();
-  let palindromeChecker =
-    testWord.toString().toLowerCase() === newString
-      ? ". This is a palindrome"
-      : ". This is not a palindrome";
-
-  return (
-    "The old input was: " +
-    testWord +
-    ". The new output is: " +
-    testPal +
-    palindromeChecker
-  );
-};
-
-palindromeCheckOne(wordOne);
-
-// Vers. 2: Implosive style, algorithm from David Tang https://davidtang.io/2019-04-11-learning-recursion-in-javascript-part-4/
-
-let wordTwo = "racecar";
-
-palindromeCheckTwo = (testWord) => {
-  let oldString = testWord.toString().toLowerCase();
-
-  // Base conditional. Either reach a middle letter for an odd numbered string or reach 0 on an even numbered string
-
-  if (oldString.length <= 1) {
-    return true;
-  }
-  //ES6 syntax. Not 100% understood
-  let [firstLetter] = oldString;
-  let lastLetter = oldString[oldString.length - 1];
-
-  if (firstLetter === lastLetter) {
-    let leftoverString = oldString.substring(1, oldString.length - 1);
-    return palindromeCheckTwo(leftoverString);
-  } else {
-    return false;
-  }
-};
-
-palindromeCheckTwo(wordTwo);
-
-//Vers. 3 using slice and recursion (a la Nat Giron)
-
-let wordThree = "noodoon";
-
-function palindromeCheckThree(testWord) {
-  let firstLetter = testWord[0];
-  let lastLetter = testWord[testWord.length - 1];
-
-  if (testWord.length < 2) {
-    return true;
-  }
-
-  if (firstLetter === lastLetter) {
-    // Recursion setup
-    leftoverString = testWord.slice(1, testWord.length - 1);
-    // Recursion execution
-    return palindromeCheckThree(leftoverString);
-  }
-  // Needed to keep the loop running
-  console.log(testWord);
-  return false;
+  return str;
 }
 
-desiredOutput =
-  "Is " + wordThree + " a Palindrome? >>> " + palindromeCheckThree(wordThree);
+desiredOutput = dudeCall(lyrics);
+
 //DONT CHANGE! THIS IS OUTPUT LINE
 document.getElementById("jsedit").innerHTML =
   "Result from exercise: " + desiredOutput;
 
 // desired Output and such goes here
-
-// Version 3: Master strike from Nat Giron
