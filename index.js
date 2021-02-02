@@ -29,22 +29,14 @@ function dudeCall(str) {
   for (i = 0; i < str.length - 1; i++) {
     if (str.charAt(i) === "J") {
       str = str.replace("Jude", "Dude");
+    } else if (str.charAt(i) === "\n") {
+      str = str.replace("\n", "</br>");
     }
   }
   return str;
 }
 
-// Can format in the console, but no idea how to render nicely in the HTML output
-function toPrint(str) {
-  let arr = str.split("\n");
-  for (let i = 0; i < arr.length; i++) {
-    console.log(arr[i] + "\n");
-  }
-  return arr.join("\n");
-}
-
 desiredOutput = dudeCall(lyrics);
-toPrint(desiredOutput);
 //DONT CHANGE! THIS IS OUTPUT LINE
 document.getElementById("jsedit").innerHTML =
   "Result from exercise: " + desiredOutput;
