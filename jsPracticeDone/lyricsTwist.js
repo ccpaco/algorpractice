@@ -36,9 +36,4 @@ function dudeCall(str) {
   return str;
 }
 
-desiredOutput = dudeCall(lyrics);
-//DONT CHANGE! THIS IS OUTPUT LINE TO HTML FILE
-document.getElementById("jsedit").innerHTML =
-  "Result from exercise: " + desiredOutput;
-
 // desired Output and such goes here
