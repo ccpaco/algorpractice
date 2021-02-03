@@ -1,5 +1,5 @@
 //EXERCISE TITLE - Palindrome checker
-//EXERCISE DATE - Jan 23 2020
+//EXERCISE DATE - Jan 23 2021
 
 //Vers. 1 (Chris): Original, novice, the long way. Split and reverse a string, join it again, and compare to original.
 

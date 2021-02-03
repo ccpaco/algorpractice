@@ -1,5 +1,5 @@
 //NUMBER COMPARISON EXERCISE
-//January 16 2020
+//January 16 2021
 
 let number = max(72, 40);
 

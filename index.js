@@ -1,44 +1,71 @@
-//EXERCISE TITLE - The Beatles with a twist - work in progress
-//EXERCISE DATE - Feb 1 2021
+//EXERCISE TITLE - Math stuffs
+//EXERCISE DATE - Feb 2 2021
+//Description: Decided to take it back with some simple math functions today. The focus is on reinforcing solid output formattting
 
-// Start off loading some Beatles lyrics. Will improve formatting.
-//My funny idea here is to replace Jude with Dude. Now, how to go about doing so?
+//FACTORIAL - Recursive Style. Will que up functions until num === 0, then will execute outwards (1 * 2 * 3 * ... * num)
 
-let lyrics = `Hey Jude, don't make it bad \n
-Take a sad song and make it better \n
-Remember to let her into your heart \n
-Then you can start to make it better \n
-Hey Jude, don't be afraid \n
-You were made to go out and get her \n
-The minute you let her under your skin \n 
-Then you begin to make it better \n
-Oh-oh-oh, and anytime you feel the pain \n
-Hey Jude, refrain \n
-Don't carry the world upon your shoulders \n
-For well you know that it's a fool \n
-Who plays it cool \n
-By making his world a little colder`;
-
-//V.1 use replace. Only works for first instance of "Jude" though.
-
-// desiredOutput = lyrics.replace("Jude", "Dude");
-
-//V.2 Simple iterative function works. Now, how to format?
-
-function dudeCall(str) {
-  for (i = 0; i < str.length - 1; i++) {
-    if (str.charAt(i) === "J") {
-      str = str.replace("Jude", "Dude");
-    } else if (str.charAt(i) === "\n") {
-      str = str.replace("\n", "</br>");
-    }
+let factorial = function (num) {
+  if (num === 0) {
+    return 1;
+  } else {
+    return (num *= factorial(num - 1));
   }
-  return str;
-}
+};
 
-desiredOutput = dudeCall(lyrics);
+// FACTORIAL B - Using a While Loop
+let factorialB = function (num) {
+  let base = 1;
+  while (num > 1) {
+    base *= num;
+    num -= 1;
+  }
+  return base;
+};
+
+//FIBONACCI SEQUENCE. Given a length 'num', execute the add sequence starting with 0 and 1.
+let fibArr = [0, 1];
+
+//accepts a length, which is number of times to execute.
+let fibFunc = function (num) {
+  for (let i = 1; i < num - 1; i++) {
+    let newNum = fibArr[i] + fibArr[i - 1];
+    fibArr.push(newNum);
+  }
+  return fibArr;
+};
+
+// console.log(fibFunc(10));
+
+//CIRCLE Formulas
+let pi = Math.PI;
+const circArea = function (num) {
+  return pi * (num * num);
+};
+//Written arrow function style
+const circPerim = (num) => {
+  return 2 * pi * num;
+};
+
+let mathOutput = (num) => {
+  return (
+    "Factorial:" +
+    factorial(num) +
+    "</br> Area:" +
+    circArea(num) +
+    "</br> Circumference:" +
+    circPerim(num)
+  );
+};
+
+let desiredOutput =
+  "Execute factorial, and Circle Area and Circumference of 4: " +
+  "</br>" +
+  mathOutput(4);
+
+// desiredOutput = ;
 //DONT CHANGE! THIS IS OUTPUT LINE
-document.getElementById("jsedit").innerHTML =
-  "Result from exercise: " + desiredOutput;
+document.getElementById(
+  "jsedit"
+).innerHTML = `Result from exercise: ${desiredOutput}`;
 
 // desired Output and such goes here
