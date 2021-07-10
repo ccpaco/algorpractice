@@ -56,3 +56,21 @@ function interest(principal, rate = 3.5, years = 5) {
 }
 
 console.log(interest(10000));
+
+
+// method -> obj
+// function -> global (window, global)
+const video = {
+  title: 'a',
+  tags: ['a', 'b', 'c'],
+  showTags() {
+    // callback function level, put 'this' outside to access title
+    this.tags.forEach(function(tag){
+      console.log(this, tag);
+    }, this); // placing this after function brings it back to obj scope
+  }
+};
+
+// obj method call
+// ends up calling 3 Window objects but each tag is called
+video.showTags();
