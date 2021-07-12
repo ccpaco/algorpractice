@@ -42,7 +42,6 @@ let desiredOutput = dudeCall(lyrics);
 
 // desiredOutput = ;
 //DONT CHANGE! THIS IS OUTPUT LINE
-document.getElementById("jsedit").innerHTML =
-  "Result from exercise: " + <br></br> + desiredOutput;
+document.getElementById("jsedit").innerHTML = desiredOutput;
 
 // desired Output and such goes here
