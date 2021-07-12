@@ -43,6 +43,6 @@ let desiredOutput = dudeCall(lyrics);
 // desiredOutput = ;
 //DONT CHANGE! THIS IS OUTPUT LINE
 document.getElementById("jsedit").innerHTML =
-  "Result from exercise: /n" + desiredOutput;
+  "Result from exercise: \n" + desiredOutput;
 
 // desired Output and such goes here
