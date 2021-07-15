@@ -12,6 +12,8 @@ let factorial = function (num) {
   }
 };
 
+// example as follow
+
 // FACTORIAL B - Using a While Loop
 let factorialB = function (num) {
   let base = 1;
